@@ -36,7 +36,7 @@ def login() :
 			if result['password']!=password :
 				return "password doesnot match .Go back and reeenter the password"
 			session['username']=username
-			session['c_type']=result['c_type']						
+						
 			return redirect(url_for('home'))
 		return "username does not exist"	
 	return redirect(url_for('home'))
@@ -50,16 +50,12 @@ def signup():
 
 		user_info=dict()
 		user_info['username']=request.form['username']
-		user_info['password']=request.form['password1']
+		user_info['password']=request.form['password']
 		
-		password2=request.form['password2']
-		user_info['c_type']=request.form['type']
-		if user_info['c_type'] == 'buyer' :
-			user_info['cart']=[]
+		user_info['cart']=[]
 		if user_exists(user_info['username']) :
 			return "username already exists"
-		if user_info['password']!=password2 :
-			return "passwords dont match"
+		
 
 		save_user(user_info)
 		return "user signedup"

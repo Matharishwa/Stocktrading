@@ -1,0 +1,98 @@
+{% extends 'lay.html' %}
+
+{% block body %}
+
+ <br>
+
+{% if session %}
+
+
+<center>
+<p> Welcome {{session['username']}}</p>
+<p> You have  Successfully Signed in as  a {{session['c_type']}} </p>
+</center>
+
+{% if session['c_type'] == 'buyer' %}
+
+<p><a href="/products" > Click Here</a> to look at products available for sale </p>
+<p><a href="/cart" > Click Here </a> to look at your cart                  </p>
+
+{% else %}
+
+<p> Add product to look products added to the Store   </p>
+<center>
+	<form action="/products" method="POST">
+		<input  type="text" name="name" placeholder="Enter product name "><br>
+		<input  type="text" name="descr" placeholder="Enter product description"><br>
+		<input  type="text" name="price" placeholder="Enter product price "><br>
+		<input  type="submit" value="Add Product" >
+	</form>
+</center>
+
+<p><a href="/products">click here</a> to look at the products you've added to the store</p>
+<p><a href="/cart">click here</a> to look at the products you've added to the cart</p>
+
+
+
+{% endif %}
+{% else %}
+
+
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+
+
+<div class="container">
+    <form class="form-horizontal" action="/login" method="POST">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" class="form-control"  placeholder=" Enter username" name="username">
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" class="form-control" placeholder="Enter password" name="password">
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" name="remember"> Remember me</label><br>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button><br>
+  </form>
+</div>
+
+<br>
+<br>
+
+<!-- 
+<p> login </p>
+<form action ="/login" method="POST">
+	<input type="text" name="username" placeholder="enter username  ..."><br>
+	<input type="password" name="password" placeholder="enter password .."><br>
+	<input type="submit"  value="login" >
+
+</form> -->
+
+
+
+
+ <div class="container">
+
+<form  class="form-horizontal" action="/signup" method="POST">
+	<p> Dont have an account ? Sign up </p>
+	<input type="text" name="username" placeholder=" Enter Username" required>
+	<input type="password" name="password1" placeholder=" Enter Password" required>
+	<input type="password" name="password2" placeholder=" Re enter Password"required>
+	<p> Customer Type</p><br>
+	<p> Buyer        </p> <input type="radio" name="type" value="buyer" required>
+	<p> Seller       </p> <input type="radio" name="type" value="seller" >
+	<input type="submit" value="Create Account">
+</form>
+{% endif %}
+{% endblock body %}

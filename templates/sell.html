@@ -1,0 +1,28 @@
+{% extends 'home2.html' %}
+{% block body %}
+<div class="row" style="padding-top: 40px">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <h1 style="text-align: center">SELL</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <form action="/sell" method="POST" style="padding: 30px 20px;margin-top: 30px ; border: 1px solid #263238; background-color: #263238; color: white">
+            <div class="form-group" >
+              <label for="script">Script:</label>
+              <input type="text" class="form-control" name="script" style="background-color: #37474F; border-color: rgb(74, 98, 110); color: white">
+            </div>
+            <div class="form-group" >
+              <label for="quantity">Quantity:</label>
+              <input type="text" class="form-control" name="quantity" style="background-color: #37474F; border-color: rgb(74, 98, 110); color: white">
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary btn-lg" style="margin-left: 30%; width: 40%; font-size: 16px ; margin-top: 10px ">PLACE ORDER</button>
+            </div>    
+        </form>
+    </div>
+</div>
+{% endblock body %}
